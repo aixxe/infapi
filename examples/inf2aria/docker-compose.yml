@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  infapi:
+    image: aixxe/infapi
+
+  inf2aria:
+    image: aixxe/inf2aria
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ${PWD}/output:/app/output
