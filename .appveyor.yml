@@ -1,0 +1,23 @@
+build_cloud: Nitori
+image: Windows
+
+branches:
+  only:
+    - master
+
+configuration:
+  - Debug
+  - Release
+
+init:
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+
+build_script:
+  - cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE="%CONFIGURATION%" -DRESTINIO_USE_EXTERNAL_EXPECTED_LITE=1 -DBUILD_SHARED_LIBS:BOOL=OFF
+  - cmake --build build
+
+after_build:
+  - 7z a build\infapi.zip build\infapi.dll build\infapi.exe
+
+artifacts:
+  - path: build\infapi.zip
