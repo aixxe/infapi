@@ -57,7 +57,7 @@ target_compile_features(${PROJECT_NAME}_launcher PUBLIC cxx_std_23)
 set_target_properties(${PROJECT_NAME}_launcher PROPERTIES OUTPUT_NAME "infapi")
 
 add_library(${PROJECT_NAME} SHARED
-    src/eacapi.cpp
+    src/infapi.cpp
     src/server.cpp
     src/imports/avs2.cpp
     src/imports/eacnet.cpp
